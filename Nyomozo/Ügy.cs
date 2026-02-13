@@ -15,14 +15,14 @@ namespace Nyomozo
         private List<string> szemelyekListaja;
         private List<string> bizonyitekokListaja;
 
-        public Ügy(string ügyAzonosító, string cim, string leiras, string allapot, List<string> szemelyekListaja, List<string> bizonyitekokListaja)
+        public Ügy(string ügyAzonosító, string cim, string leiras, string allapot)
         {
             this.ügyAzonosító = ügyAzonosító;
             this.cim = cim;
             this.leiras = leiras;
             this.allapot = allapot;
-            this.szemelyekListaja = szemelyekListaja;
-            this.bizonyitekokListaja = bizonyitekokListaja;
+            List<string> szemelyekListaja = new List<string>();
+            List<string> bizonyitekokListaja = new List<string>();
         }
 
         public string ÜgyAzonosító { get => ügyAzonosító; set => ügyAzonosító = value; }
@@ -54,8 +54,7 @@ namespace Nyomozo
                 switch (szamInput)
                 {
                     case 1:
-                        Console.Clear();
-
+                        Ügy.ügyLetrehozasa();
                         break;
                     case 2:
                         break;
@@ -75,9 +74,31 @@ namespace Nyomozo
             while (szamInput != 4);
             
         }
-        public void ügyLetrehozasa()
+        public static void ügyLetrehozasa()
         {
-            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Ügy létrehozását választotta!\n");
+            Console.ResetColor();
+            Console.Write("Ügy azonosítója: ");
+            string ugyAzonosito = Console.ReadLine();
+            Console.Write("Cím: ");
+            string cim = Console.ReadLine();
+            Console.Write("Leírás: ");
+            string leiras = Console.ReadLine();
+            Console.Write("Állapot: ");
+            string allapot = Console.ReadLine();
+
+            Ügy ujUgy = new Ügy(ugyAzonosito,cim,leiras,allapot);
+
+            Console.Write($"Jelenlévő személyek: ");
+
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
+            Console.ReadKey();
+            Console.Clear();
+            Console.ResetColor();
         }
 
     }   
