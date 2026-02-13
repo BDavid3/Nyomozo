@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Nyomozo
 {
@@ -92,7 +93,7 @@ namespace Nyomozo
             Ügy ujUgy = new Ügy(ugyAzonosito,cim,leiras,allapot);
 
             Console.Write($"Jelenlévő személyek: ");
-
+            
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("\nNyomj meg egy gombot a visszatéréshez...");

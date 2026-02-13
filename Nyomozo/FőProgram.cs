@@ -43,7 +43,7 @@
             
 		}
 
-        static private void UI()
+        static void UI()
         {
 			Console.WriteLine("1. Ügyek kezelése");
 			Console.WriteLine("2. Személyek kezelése");

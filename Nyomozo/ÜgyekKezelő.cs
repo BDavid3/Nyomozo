@@ -16,5 +16,18 @@ namespace Nyomozo
         }
 
         internal List<Ügy> UgyekListaja { get => ugyekListaja; set => ugyekListaja = value; }
+
+        public void ugyHozzaadLista(Ügy ugy)
+        {
+            ugyekListaja.Add(ugy);
+        }
+
+        public void ugyKiiratas()
+        {
+            foreach (var ugy in ugyekListaja)
+            {
+                Console.WriteLine(ugy);
+            }
+        }
     }
 }

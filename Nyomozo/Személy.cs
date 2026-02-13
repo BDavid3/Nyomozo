@@ -9,6 +9,7 @@ namespace Nyomozo
 {
     internal class Személy
     {
+
         private string nev;
         private int eletkor;
         private string megjegyzes;
@@ -65,6 +66,9 @@ namespace Nyomozo
         }
         public static void szemelyLetrehozasa()
         {
+              SzemélyekKezelő személyekKezelő = new SzemélyekKezelő();
+        ÜgyekKezelő ügyekKezelő = new ÜgyekKezelő();
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Személy létrehozását választotta!\n");
@@ -77,6 +81,10 @@ namespace Nyomozo
             string megjegyzes = Console.ReadLine();
 
             Személy ujSzemely = new Személy(nev,eletkor,megjegyzes);
+            személyekKezelő.szemelyHozzaadLista(ujSzemely);
+
+            Console.WriteLine("Jelenleg található ügyek: ");
+            Console.Write($"\n{ügyekKezelő.ugyKiiratas}");
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
