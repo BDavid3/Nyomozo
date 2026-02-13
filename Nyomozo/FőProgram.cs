@@ -4,18 +4,19 @@
     {
         static void Main(string[] args)
         {
-            UI();
 			int intSzamInput;
 
-			do
+            do
 			{
-				Console.Write("Szám: ");
+                UI();
+                Console.Write("Szám: ");
 				intSzamInput = Convert.ToInt32(Console.ReadLine());
 
 				switch (intSzamInput)
 				{
 					case 1:
-						break;
+						Ügy.ügyKezelese();
+                        break;
 					case 2:
 						break;
 					case 3:
@@ -25,19 +26,23 @@
 					case 5:
 						break;
 					case 6:
+                        Console.WriteLine("Kilépés...");
 						Environment.Exit(0);
 						break;
 					default:
-						Console.WriteLine("Rossz értéket adtál meg!");
-						break;
+						Console.Clear();
+						Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Rossz értéket adtál meg!\n");
+						Console.ResetColor();
+                        break;
 				}
 			}
-			while (intSzamInput < 1 || intSzamInput > 6);
+			while (intSzamInput != 6);
 			
             
 		}
 
-        static void UI()
+        static private void UI()
         {
 			Console.WriteLine("1. Ügyek kezelése");
 			Console.WriteLine("2. Személyek kezelése");
@@ -46,5 +51,6 @@
 			Console.WriteLine("5. Elemzés / Döntések");
 			Console.WriteLine("6. Kilépés\n");
         }
+
     }
 }
