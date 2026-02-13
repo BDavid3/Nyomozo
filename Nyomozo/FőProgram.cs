@@ -18,7 +18,8 @@
 						Ügy.ügyKezelese();
                         break;
 					case 2:
-						break;
+						Személy.szemelyKezelese();
+                        break;
 					case 3:
 						break;
 					case 4:
