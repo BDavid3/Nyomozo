@@ -25,73 +25,7 @@ namespace Nyomozo
         public int Eletkor { get => eletkor; set => eletkor = value; }
         public string Megjegyzes { get => megjegyzes; set => megjegyzes = value; }
 
-        public static void szemelyKezelese()
-        {
-            int szamInput;
-
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Személyek kezelését választotta!\n");
-            Console.ResetColor();
-
-            do
-            {
-                Console.WriteLine("1. Személy létrehozása");
-                Console.WriteLine("2. Személy hozzáadása egy ügyhöz");
-                Console.WriteLine("3. Kilépés\n");
-                Console.Write("Szám: ");
-
-                szamInput = Convert.ToInt32(Console.ReadLine());
-
-                switch (szamInput)
-                {
-                    case 1:
-                        szemelyLetrehozasa();
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-                        Console.Clear();
-                        return;
-                    default:
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Rossz értéket adtál meg!\n");
-                        Console.ResetColor();
-                        break;
-                }
-            }
-            while (szamInput != 3);
-        }
-        public static void szemelyLetrehozasa()
-        {
-              SzemélyekKezelő személyekKezelő = new SzemélyekKezelő();
-        ÜgyekKezelő ügyekKezelő = new ÜgyekKezelő();
-
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Személy létrehozását választotta!\n");
-            Console.ResetColor();
-            Console.Write("Név: ");
-            string nev = Console.ReadLine();
-            Console.Write("Életkor: ");
-            int eletkor = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Megjegyzés: ");
-            string megjegyzes = Console.ReadLine();
-
-            Személy ujSzemely = new Személy(nev,eletkor,megjegyzes);
-            személyekKezelő.szemelyHozzaadLista(ujSzemely);
-
-            Console.WriteLine("Jelenleg található ügyek: ");
-            Console.Write($"\n{ügyekKezelő.ugyKiiratas}");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
-            Console.ReadKey();
-            Console.Clear();
-            Console.ResetColor();
-        }
+        
         public void szemelyUgy()
         {
             Console.Clear();

@@ -17,12 +17,12 @@ namespace Nyomozo
 
         internal List<Ügy> UgyekListaja { get => ugyekListaja; set => ugyekListaja = value; }
 
-        public void ugyHozzaadLista(Ügy ugy)
+        public void hozzaad(Ügy ugy)
         {
             ugyekListaja.Add(ugy);
         }
 
-        public void ugyKiiratas()
+        public void kiirat()
         {
             foreach (var ugy in ugyekListaja)
             {
