@@ -81,6 +81,7 @@
                         ugyLetrehozas(ugyKezelo, szemelyKezelo, bizonyitekKezelo);
                         break;
                     case 2:
+                        ugyModositasa(ugyKezelo);
                         break;
                     case 3:
                         break;
@@ -176,6 +177,97 @@
             Console.Clear();
             Console.ResetColor();
         }
+        public static void ugyModositasa(ÜgyekKezelő ügyekKezelő)
+        {
+            Console.Clear();
+            Console.WriteLine("Jelenlegi ügyek: ");
+            ügyekKezelő.kiirat();
+            Console.Write("Módosítandó ügy ID-je: ");
+            string ugyID = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("1. Adattag átnevezése");
+            Console.WriteLine("2. Adattag törlése");
+            Console.WriteLine("3. Adattag hozzáadása");
+            Console.Write("\nSzám: ");
+
+
+                // idáig
+            int modositInput = Convert.ToInt32(Console.ReadLine());
+
+                if (modositInput == 1)
+                {
+                    Console.Write("Melyik adattagot szeretnéd átnevezni? (Cím, Leírás, Állapot): ");
+                    string adattag = Console.ReadLine();
+                    Console.Write("Új érték: ");
+                    string ujErtek = Console.ReadLine();
+    
+                    foreach (var ugy in ügyekKezelő.UgyekListaja)
+                    {
+                        if (ugy.UgyAzonosito == ugyID)
+                        {
+                            switch (adattag.ToLower())
+                            {
+                                case "cím":
+                                    ugy.Cim = ujErtek;
+                                    break;
+                                case "leírás":
+                                    ugy.Leiras = ujErtek;
+                                    break;
+                                case "állapot":
+                                    ugy.Allapot = ujErtek;
+                                    break;
+                                default:
+                                    Console.WriteLine("Nincs ilyen adattag!");
+                                    break;
+                            }
+                        }
+                    }
+                }
+                else if (modositInput == 2)
+                {
+                    Console.Write("Melyik adattagot szeretnéd törölni? (Cím, Leírás, Állapot): ");
+                    string adattag = Console.ReadLine();
+    
+                    foreach (var ugy in ügyekKezelő.UgyekListaja)
+                    {
+                        if (ugy.UgyAzonosito == ugyID)
+                        {
+                            switch (adattag.ToLower())
+                            {
+                                case "cím":
+                                    ugy.Cim = null;
+                                    break;
+                                case "leírás":
+                                    ugy.Leiras = null;
+                                    break;
+                                case "állapot":
+                                    ugy.Allapot = null;
+                                    break;
+                                default:
+                                    Console.WriteLine("Nincs ilyen adattag!");
+                                    break;
+                            }
+                        }
+                    }
+                }
+                else if (modositInput == 3)
+                {
+                    Console.Write("Melyik adattagot szeretnéd hozzáadni? (Cím, Leírás, Állapot): ");
+                    string adattag = Console.ReadLine();
+                    Console.Write("Érték: ");
+                    string ertek = Console.ReadLine();
+    
+                    foreach (var ugy in ügyekKezelő.UgyekListaja)
+                    {
+                        if (ugy.UgyAzonosito == ugyID)
+                        {
+                            switch (adattag.ToLower())
+                            {
+                                case "cím":
+                                    ugy.Cim = ertek;
+                                    break;
+                        }
 
         public static void szemelyKezelese(SzemélyekKezelő kezelo, ÜgyekKezelő ugyKezelo)
         {

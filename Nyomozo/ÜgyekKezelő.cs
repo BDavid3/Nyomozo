@@ -26,7 +26,7 @@ namespace Nyomozo
         {
             foreach (var ugy in ugyekListaja)
             {
-                Console.WriteLine(ugy);
+                Console.WriteLine($"{ugy}\n");
             }
         }
     }
