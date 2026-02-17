@@ -17,17 +17,12 @@ namespace Nyomozo
 
         internal List<Személy> SzemelyekListaja { get => szemelyekListaja; set => szemelyekListaja = value; }
 
-        public void Hozzaad(Személy szemely)
+        public void hozzaad(Személy szemely)
         {
             szemelyekListaja.Add(szemely);
         }
 
-        public List<Személy> Osszes()
-        {
-            return szemelyekListaja;
-        }
-
-        public void Kiir()
+        public void kiir()
         {
             if (szemelyekListaja.Count == 0)
             {
@@ -36,7 +31,7 @@ namespace Nyomozo
             }
             foreach (var szemely in szemelyekListaja)
             {
-                Console.WriteLine(szemely);
+                Console.WriteLine($"{szemely}\n");
             }
         }
     }

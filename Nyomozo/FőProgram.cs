@@ -6,6 +6,7 @@
         {
             SzemélyekKezelő személyekKezelő = new SzemélyekKezelő();
             ÜgyekKezelő ügyekKezelő = new ÜgyekKezelő();
+            BizonyítékokKezelő bizkez = new BizonyítékokKezelő();
 
             int intSzamInput;
 
@@ -18,7 +19,7 @@
                 switch (intSzamInput)
                 {
                     case 1:
-                        ugyekKezelese(ügyekKezelő);
+                        ugyekKezelese(ügyekKezelő, személyekKezelő, bizkez);
                         break;
                     case 2:
                         szemelyKezelese(személyekKezelő,ügyekKezelő);
@@ -55,7 +56,7 @@
             Console.WriteLine("5. Elemzés / Döntések");
             Console.WriteLine("6. Kilépés\n");
         }
-        public static void ugyekKezelese(ÜgyekKezelő ugyKezelo)
+        public static void ugyekKezelese(ÜgyekKezelő ugyKezelo, SzemélyekKezelő szemelyKezelo, BizonyítékokKezelő bizonyitekKezelo)
         {
             int szamInput;
 
@@ -77,7 +78,7 @@
                 switch (szamInput)
                 {
                     case 1:
-                        ugyLetrehozas(ugyKezelo);
+                        ugyLetrehozas(ugyKezelo, szemelyKezelo, bizonyitekKezelo);
                         break;
                     case 2:
                         break;
@@ -97,7 +98,7 @@
             while (szamInput != 4);
 
         }
-        public static void ugyLetrehozas(ÜgyekKezelő ügyekKezelő)
+        public static void ugyLetrehozas(ÜgyekKezelő ügyekKezelő, SzemélyekKezelő szemelyekKezelo, BizonyítékokKezelő bizonyitekokKezelo)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
@@ -113,9 +114,61 @@
             string allapot = Console.ReadLine();
 
             Ügy ujUgy = new Ügy(ugyAzonosito, cim, leiras, allapot);
-
+            ügyekKezelő.hozzaad(ujUgy);
+            
             Console.Write($"Jelenlévő személyek: ");
+            szemelyekKezelo.kiir();
 
+            Console.WriteLine("\n1. Jelenlegi ügyhöz személy hozzáadása");
+            Console.WriteLine("2. Személy hozzáadása kihagyása");
+            Console.Write("Szám: ");
+            int hozzaadInput = Convert.ToInt32(Console.ReadLine());
+
+            if (hozzaadInput == 1)
+            {
+                Console.Write("Személyek száma: ");
+                int mennyi = Convert.ToInt32(Console.ReadLine());
+
+                for (int i = 0; i < mennyi; i++)
+                {
+                    int e = 1;
+                    Console.Write($"{e}. személy neve: ");
+                    string szemelyNev = Console.ReadLine();
+                    ujUgy.SzemelyekListaja.Add(szemelyNev);
+                }
+
+            }
+            else if (hozzaadInput == 2)
+            {
+                Console.WriteLine("Személy hozzáadása kihagyva.");
+            }
+
+            Console.Write($"Jelenlévő bizonyítékok kiírása: ");
+            bizonyitekokKezelo.kiir();
+
+            Console.WriteLine("\n1. Jelenlegi ügyhöz bizonyíték hozzáadása");
+            Console.WriteLine("2. Bizonyítéks hozzáadása kihagyása");
+            Console.Write("Szám: ");
+            int hozzaadInput2 = Convert.ToInt32(Console.ReadLine());
+
+            if (hozzaadInput2 == 1)
+            {
+                Console.Write("Bizonyítékok száma: ");
+                int mennyi2 = Convert.ToInt32(Console.ReadLine());
+
+                for (int i = 0; i < mennyi2; i++)
+                {
+                    int e2 = 1;
+                    Console.Write($"{e2}. bizonyíték neve: ");
+                    string bizNev = Console.ReadLine();
+                    ujUgy.BizonyitekokListaja.Add(bizNev);
+                }
+
+            }
+            else if (hozzaadInput == 2)
+            {
+                Console.WriteLine("Bizonyíték hozzáadása kihagyva.");
+            }
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
