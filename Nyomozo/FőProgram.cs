@@ -207,9 +207,8 @@
 
             do
             {
-                Console.WriteLine("1. Személy létrehozása");
-                Console.WriteLine("2. Személy hozzáadása egy ügyhöz");
-                Console.WriteLine("3. Kilépés\n");
+                Console.WriteLine("1. Személy létrehozása, és hozzáadása egy ügyhöz");
+                Console.WriteLine("2. Kilépés\n");
                 Console.Write("Szám: ");
 
                 szamInput = Convert.ToInt32(Console.ReadLine());
@@ -220,10 +219,8 @@
                         szemelyLetrehozasa(kezelo,ugyKezelo);
                         break;
                     case 2:
+                        szamInput = 2;
                         break;
-                    case 3:
-                        Console.Clear();
-                        return;
                     default:
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -232,7 +229,7 @@
                         break;
                 }
             }
-            while (szamInput != 3);
+            while (szamInput != 2);
         }
         public static void szemelyLetrehozasa(SzemélyekKezelő szem,ÜgyekKezelő ugy)
         {
@@ -249,10 +246,14 @@
             string megjegyzes = Console.ReadLine();
 
             Személy ujSzemely = new Személy(nev, eletkor, megjegyzes);
-            szem.Hozzaad(ujSzemely);
+            szem.hozzaad(ujSzemely);
 
-            Console.WriteLine($"Jelenleg található ügyek: {ugy.kiirat}");
-            
+            Console.WriteLine($"Jelenlévő ügyek: {ugy.kiirat}");
+            Console.Write($"\n Ügy Azonosítója: ");
+            string azonosito = Console.ReadLine();
+
+            ugy.ugySzemelyHozzaad(azonosito,ujSzemely,szem);
+
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
             Console.ReadKey();

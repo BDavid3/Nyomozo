@@ -30,6 +30,16 @@ namespace Nyomozo
                 Console.WriteLine($"{ugy}\n");
             }
         }
+        public void ugySzemelyHozzaad(string azonosit,Személy ujSzemely, SzemélyekKezelő szemelykezelo)
+        {
+            foreach (var ugy in ugyekListaja)
+            {
+                if (azonosit == ugy.ÜgyAzonosító)
+                {
+                    szemelykezelo.SzemelyekListaja.Add(ujSzemely);
+                }
+            }
+        }
 
         /*public void kiiratSorszammal(string ugyid, Ügy azugy)
         {
