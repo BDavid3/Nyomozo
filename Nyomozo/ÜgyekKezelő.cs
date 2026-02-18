@@ -30,13 +30,23 @@ namespace Nyomozo
                 Console.WriteLine($"{ugy}\n");
             }
         }
-        public void ugySzemelyHozzaad(string azonosit,Személy ujSzemely, SzemélyekKezelő szemelykezelo)
+        public void ugySzemelyHozzaad(string azonosit,Személy ujSzemely)
         {
             foreach (var ugy in ugyekListaja)
             {
                 if (azonosit == ugy.ÜgyAzonosító)
                 {
-                    szemelykezelo.SzemelyekListaja.Add(ujSzemely);
+                    ugy.SzemelyekListaja.Add(ujSzemely);
+                }
+            }
+        }
+        public void ugyBizonyitekHozzaad(string azonosit, Bizonyíték ujBizonyitek)
+        {
+            foreach (var ugy in ugyekListaja)
+            {
+                if (azonosit == ugy.ÜgyAzonosító)
+                {
+                    ugy.BizonyitekokListaja.Add(ujBizonyitek);
                 }
             }
         }
@@ -76,6 +86,6 @@ namespace Nyomozo
                     Console.WriteLine("\n Helytelen paraméter.");
                     break;
             }*/
-        
+
     }
 }

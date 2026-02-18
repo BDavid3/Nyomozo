@@ -13,8 +13,8 @@ namespace Nyomozo
         private string cim;
         private string leiras;
         private string allapot;
-        private List<string> szemelyekListaja;
-        private List<string> bizonyitekokListaja;
+        private List<Személy> szemelyekListaja;
+        private List<Bizonyíték> bizonyitekokListaja;
 
         public Ügy(string ügyAzonosító, string cim, string leiras, string allapot)
         {
@@ -30,8 +30,8 @@ namespace Nyomozo
         public string Cim { get => cim; set => cim = value; }
         public string Leiras { get => leiras; set => leiras = value; }
         public string Allapot { get => allapot; set => allapot = value; }
-        public List<string> SzemelyekListaja { get => szemelyekListaja; set => szemelyekListaja = value; }
-        public List<string> BizonyitekokListaja { get => bizonyitekokListaja; set => bizonyitekokListaja = value; }
+        public List<Személy> SzemelyekListaja { get => szemelyekListaja; set => szemelyekListaja = value; }
+        public List<Bizonyíték> BizonyitekokListaja { get => bizonyitekokListaja; set => bizonyitekokListaja = value; }
 
     }   
     

@@ -24,6 +24,7 @@
                         szemelyKezelese(személyekKezelő, ügyekKezelő);
                         break;
                     case 3:
+                        bizonyitekKezelese(ügyekKezelő, bizkez);
                         break;
                     case 4:
                         break;
@@ -129,7 +130,13 @@
                     int e = 1;
                     Console.Write($"{e}. személy neve: ");
                     string szemelyNev = Console.ReadLine();
-                    ujUgy.SzemelyekListaja.Add(szemelyNev);
+                    Console.Write($"{e}. személy életkora: ");
+                    int eletkor = Convert.ToInt32(Console.ReadLine());
+                    Console.Write($"{e}. személy megjegyzése: ");
+                    string megjegyzes = Console.ReadLine();
+                    Személy ujSzemely = new Személy(szemelyNev,eletkor,megjegyzes);
+
+                    ujUgy.SzemelyekListaja.Add(ujSzemely);
                 }
 
             }
@@ -154,9 +161,15 @@
                 for (int i = 0; i < mennyi2; i++)
                 {
                     int e2 = 1;
-                    Console.Write($"{e2}. bizonyíték neve: ");
-                    string bizNev = Console.ReadLine();
-                    ujUgy.BizonyitekokListaja.Add(bizNev);
+                    Console.Write($"{e2}. bizonyíték azonosítója: ");
+                    string azonosito = Console.ReadLine();
+                    Console.Write($"{e2}. bizonyíték típusa: ");
+                    string tipus = Console.ReadLine();
+                    Console.Write($"{e2}. leírás azonosítója: ");
+                    string leirass = Console.ReadLine();
+                    Console.Write($"{e2}. bizonyíték megbízhatósága: ");
+                    int megbizhatosag = Convert.ToInt32(Console.ReadLine());
+
                 }
 
             }
@@ -252,7 +265,7 @@
             Console.Write($"\n Ügy Azonosítója: ");
             string azonosito = Console.ReadLine();
 
-            ugy.ugySzemelyHozzaad(azonosito,ujSzemely,szem);
+            ugy.ugySzemelyHozzaad(azonosito,ujSzemely);
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
@@ -266,5 +279,70 @@
             ugykez.kiiratSorszammal(ugyID,ugykez);
         }*/
 
+        public static void bizonyitekKezelese(ÜgyekKezelő ügykez, BizonyítékokKezelő bizkezel)
+        {
+            int szamInput;
+
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Bizonítékok kezelését választotta!\n");
+            Console.ResetColor();
+
+            do
+            {
+                Console.WriteLine("\n1. Bizonyíték létrehozása, és hozzáadása egy ügyhöz");
+                Console.WriteLine("2. Kilépés");
+                Console.WriteLine("\n Szám: ");
+
+                szamInput = Convert.ToInt32(Console.ReadLine());
+
+                switch (szamInput)
+                {
+                    case 1:
+                        bizonyitekLetrehozas(ügykez,bizkezel);
+                        break;
+                    case 2:
+                        szamInput = 2;
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Rossz értéket adtál meg!\n");
+                        Console.ResetColor();
+                        break;  
+                }
+            }
+            while (szamInput != 2);
+        }
+
+        public static void bizonyitekLetrehozas(ÜgyekKezelő ügykezelo, BizonyítékokKezelő bizkezelo)
+        {
+            Console.Clear();
+            Console.Write("Azonosító: ");
+            string azonosito = Console.ReadLine();
+            Console.WriteLine("Típus: ");
+            string tipus = Console.ReadLine();
+            Console.WriteLine("Leírás: ");
+            string leiras = Console.ReadLine();
+            Console.WriteLine("Megbízhatóság: ");
+            int megbizhatosag = Convert.ToInt32(Console.ReadLine());
+
+            Bizonyíték ujbizonyitek = new Bizonyíték(azonosito,tipus,leiras,megbizhatosag);
+            bizkezelo.hozzaad(ujbizonyitek);
+
+            Console.WriteLine($"Jelenlévő ügyek: {ügykezelo.kiirat}");
+            Console.Write($"\n Ügy Azonosítója: ");
+            string azon = Console.ReadLine();
+
+            ügykezelo.ugyBizonyitekHozzaad(azon,ujbizonyitek);
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
+            Console.ReadKey();
+            Console.Clear();
+            Console.ResetColor();
+
+
+        }
     }
 }

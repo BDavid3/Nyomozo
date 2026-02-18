@@ -26,7 +26,7 @@ namespace Nyomozo
         {
             if (bizonyitekok.Count == 0)
             {
-                Console.WriteLine("Nincs rögzített bizonyítékS");
+                Console.WriteLine("Nincs rögzített bizonyíték");
                 return;
             }
             foreach (var bizonyitek in bizonyitekok)
