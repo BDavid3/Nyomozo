@@ -7,7 +7,6 @@
             SzemélyekKezelő személyekKezelő = new SzemélyekKezelő();
             ÜgyekKezelő ügyekKezelő = new ÜgyekKezelő();
             BizonyítékokKezelő bizkez = new BizonyítékokKezelő();
-
             int intSzamInput;
 
             do
@@ -22,7 +21,7 @@
                         ugyekKezelese(ügyekKezelő, személyekKezelő, bizkez);
                         break;
                     case 2:
-                        szemelyKezelese(személyekKezelő,ügyekKezelő);
+                        szemelyKezelese(személyekKezelő, ügyekKezelő);
                         break;
                     case 3:
                         break;
@@ -43,8 +42,6 @@
                 }
             }
             while (intSzamInput != 6);
-
-
         }
 
         public static void UI()
@@ -68,9 +65,8 @@
             do
             {
                 Console.WriteLine("1. Ügy létrehozása");
-                Console.WriteLine("2. Ügy módosítása");
-                Console.WriteLine("3. Meglévő ügyek listázása");
-                Console.WriteLine("4. Kilépés\n");
+                Console.WriteLine("2. Meglévő ügyek listázása");
+                Console.WriteLine("3. Kilépés\n");
                 Console.Write("Szám: ");
 
                 szamInput = Convert.ToInt32(Console.ReadLine());
@@ -81,12 +77,10 @@
                         ugyLetrehozas(ugyKezelo, szemelyKezelo, bizonyitekKezelo);
                         break;
                     case 2:
-                        ugyModositasa(ugyKezelo);
+                        ugyKezelo.kiirat();
                         break;
                     case 3:
-                        break;
-                    case 4:
-                        Console.Clear();
+                        szamInput = 4;
                         return;
                     default:
                         Console.Clear();
@@ -177,7 +171,7 @@
             Console.Clear();
             Console.ResetColor();
         }
-        public static void ugyModositasa(ÜgyekKezelő ügyekKezelő)
+        /*public static void ugyModositasa(ÜgyekKezelő ügyekKezelő, Ügy uggy)
         {
             Console.Clear();
             Console.WriteLine("Jelenlegi ügyek: ");
@@ -191,83 +185,16 @@
             Console.WriteLine("3. Adattag hozzáadása");
             Console.Write("\nSzám: ");
 
+            int inp = Convert.ToInt32(Console.ReadLine());
 
-                // idáig
-            int modositInput = Convert.ToInt32(Console.ReadLine());
-
-                if (modositInput == 1)
-                {
-                    Console.Write("Melyik adattagot szeretnéd átnevezni? (Cím, Leírás, Állapot): ");
-                    string adattag = Console.ReadLine();
-                    Console.Write("Új érték: ");
-                    string ujErtek = Console.ReadLine();
-    
-                    foreach (var ugy in ügyekKezelő.UgyekListaja)
-                    {
-                        if (ugy.UgyAzonosito == ugyID)
-                        {
-                            switch (adattag.ToLower())
-                            {
-                                case "cím":
-                                    ugy.Cim = ujErtek;
-                                    break;
-                                case "leírás":
-                                    ugy.Leiras = ujErtek;
-                                    break;
-                                case "állapot":
-                                    ugy.Allapot = ujErtek;
-                                    break;
-                                default:
-                                    Console.WriteLine("Nincs ilyen adattag!");
-                                    break;
-                            }
-                        }
-                    }
-                }
-                else if (modositInput == 2)
-                {
-                    Console.Write("Melyik adattagot szeretnéd törölni? (Cím, Leírás, Állapot): ");
-                    string adattag = Console.ReadLine();
-    
-                    foreach (var ugy in ügyekKezelő.UgyekListaja)
-                    {
-                        if (ugy.UgyAzonosito == ugyID)
-                        {
-                            switch (adattag.ToLower())
-                            {
-                                case "cím":
-                                    ugy.Cim = null;
-                                    break;
-                                case "leírás":
-                                    ugy.Leiras = null;
-                                    break;
-                                case "állapot":
-                                    ugy.Allapot = null;
-                                    break;
-                                default:
-                                    Console.WriteLine("Nincs ilyen adattag!");
-                                    break;
-                            }
-                        }
-                    }
-                }
-                else if (modositInput == 3)
-                {
-                    Console.Write("Melyik adattagot szeretnéd hozzáadni? (Cím, Leírás, Állapot): ");
-                    string adattag = Console.ReadLine();
-                    Console.Write("Érték: ");
-                    string ertek = Console.ReadLine();
-    
-                    foreach (var ugy in ügyekKezelő.UgyekListaja)
-                    {
-                        if (ugy.UgyAzonosito == ugyID)
-                        {
-                            switch (adattag.ToLower())
-                            {
-                                case "cím":
-                                    ugy.Cim = ertek;
-                                    break;
-                        }
+            switch (inp)
+            {
+                case 1:
+                    adattagAtnevezes(ügyekKezelő,ugyID, uggy);
+                    break;
+                case 2:
+                    break;
+            }*/
 
         public static void szemelyKezelese(SzemélyekKezelő kezelo, ÜgyekKezelő ugyKezelo)
         {
@@ -332,6 +259,11 @@
             Console.Clear();
             Console.ResetColor();
         }
+        /*public static void adattagAtnevezes(ÜgyekKezelő ugykez, string ugyID, Ügy ugy)
+        {
+            Console.Clear();
+            ugykez.kiiratSorszammal(ugyID,ugykez);
+        }*/
 
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Nyomozo
 {
@@ -29,5 +30,42 @@ namespace Nyomozo
                 Console.WriteLine($"{ugy}\n");
             }
         }
+
+        /*public void kiiratSorszammal(string ugyid, Ügy azugy)
+        {
+            foreach (var ugy in ugyekListaja)
+            {
+                if (ugyid == ugy.ÜgyAzonosító)
+                {
+                    Console.WriteLine($"1. Cím: {ugy.Cim}");
+                    Console.WriteLine($"2. Leiras: {ugy.Leiras}");
+                    Console.WriteLine($"3. Állapot: {ugy.Allapot}");
+                }
+            }
+            Console.WriteLine("\n Szám: ");
+            int beker = Convert.ToInt32(Console.ReadLine());
+
+            switch (beker)
+            {
+                case 1:
+                    Console.Write("\n Új cím: ");
+                    string ujcim = Console.ReadLine();
+                    azugy.Cim = ujcim;
+                    break;
+                case 2:
+                    Console.Write("\n Új leírás: ");
+                    string ujleiras = Console.ReadLine();
+                    azugy.Leiras = ujleiras;
+                    break;
+                case 3:
+                    Console.Write("\n Új állapot: ");
+                    string ujallapot = Console.ReadLine();
+                    azugy.Allapot = ujallapot;
+                    break;
+                default:
+                    Console.WriteLine("\n Helytelen paraméter.");
+                    break;
+            }*/
+        
     }
 }
