@@ -52,6 +52,17 @@ namespace Nyomozo
             }
         }
 
+        public void adottUgyKiiratasa(string azonosito)
+        {
+            foreach (var ugy in ugyekListaja)
+            {
+                if (azonosito == ugy.ÜgyAzonosító)
+                {
+                    Console.WriteLine(ugy);
+                }
+            }
+        }
+
         /*public void kiiratSorszammal(string ugyid, Ügy azugy)
         {
             foreach (var ugy in ugyekListaja)

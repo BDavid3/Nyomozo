@@ -488,11 +488,20 @@
             Console.WriteLine("Jelenlegi ügyek: ");
             ügykez.kiirat();
 
+            Console.Write("Azonosító(amelyik ügyet elemezné/döntést hozna): ");
+            string azonosito = Console.ReadLine();
+
+            ügykez.adottUgyKiiratasa(azonosito);
+
+
+
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
             Console.ReadKey();
             Console.Clear();
             Console.ResetColor();
+
+
         }
     }
 }
