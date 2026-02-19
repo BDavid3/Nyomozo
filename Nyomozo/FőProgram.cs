@@ -121,7 +121,6 @@
             Console.WriteLine("2. Személy hozzáadása kihagyása");
             Console.Write("Szám: ");
             int hozzaadInput = Convert.ToInt32(Console.ReadLine());
-
             if (hozzaadInput == 1)
             {
                 Console.Write("Személyek száma: ");
@@ -130,15 +129,41 @@
                 for (int i = 0; i < mennyi; i++)
                 {
                     int e = 1;
-                    Console.Write($"{e}. személy neve: ");
-                    string szemelyNev = Console.ReadLine();
-                    Console.Write($"{e}. személy életkora: ");
-                    int eletkor = Convert.ToInt32(Console.ReadLine());
-                    Console.Write($"{e}. személy megjegyzése: ");
-                    string megjegyzes = Console.ReadLine();
-                    Személy ujSzemely = new Személy(szemelyNev,eletkor,megjegyzes);
+                    Console.Write($"{e}. személy típusa(szemely/gyanusitott): ");
+                    string tipus = Console.ReadLine();
 
-                    ujUgy.SzemelyekListaja.Add(ujSzemely);
+                    if (tipus.ToLower() == "szemely")
+                    {
+                        Console.Write($"{e}. személy neve: ");
+                        string szemelyNev = Console.ReadLine();
+                        Console.Write($"{e}. személy életkora: ");
+                        int eletkor = Convert.ToInt32(Console.ReadLine());
+                        Console.Write($"{e}. személy megjegyzése: ");
+                        string megjegyzes = Console.ReadLine();
+
+                        Személy ujSzemely = new Személy(szemelyNev, eletkor, megjegyzes);
+
+                        ujUgy.SzemelyekListaja.Add(ujSzemely);
+                    }
+                    else if (tipus.ToLower() == "gyanusitott")
+                    {
+                        Console.Write($"{e}. személy neve: ");
+                        string szemelyNev = Console.ReadLine();
+                        Console.Write($"{e}. személy életkora: ");
+                        int eletkor = Convert.ToInt32(Console.ReadLine());
+                        Console.Write($"{e}. személy megjegyzése: ");
+                        string megjegyzes = Console.ReadLine();
+                        Console.Write($"{e}. személy gyanusítottsági szintje: ");
+                        int gyanusitottsagiSzint = Convert.ToInt32(Console.ReadLine());
+                        Console.Write($"{e}. személy státusza: ");
+                        string statusz = Console.ReadLine();
+
+                        Gyanusított ujGyanusitott = new Gyanusított(szemelyNev, eletkor, megjegyzes, gyanusitottsagiSzint, statusz);
+
+                        ujUgy.SzemelyekListaja.Add(ujGyanusitott);
+                    }
+
+                    
                 }
 
             }
@@ -253,27 +278,72 @@
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Személy létrehozását választotta!\n");
             Console.ResetColor();
-            Console.Write("Név: ");
-            string nev = Console.ReadLine();
-            Console.Write("Életkor: ");
-            int eletkor = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Megjegyzés: ");
-            string megjegyzes = Console.ReadLine();
 
-            Személy ujSzemely = new Személy(nev, eletkor, megjegyzes);
-            szem.hozzaad(ujSzemely);
+            Console.Write("Személy típusa(szemely/gyanusitott):");
+            string tipus = Console.ReadLine();
 
-            Console.WriteLine($"Jelenlévő ügyek: {ugy.kiirat}");
-            Console.Write($"\n Ügy Azonosítója: ");
-            string azonosito = Console.ReadLine();
+            string nev = "";
+            int eletkor = 0;
+            string megjegyzes = "";
 
-            ugy.ugySzemelyHozzaad(azonosito,ujSzemely);
+            if (tipus.ToLower() == "szemely")
+            {
+                Console.Write("Név: ");
+                nev = Console.ReadLine();
 
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
-            Console.ReadKey();
-            Console.Clear();
-            Console.ResetColor();
+                Console.Write("Életkor: ");
+                eletkor = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Megjegyzés: ");
+                megjegyzes = Console.ReadLine();
+
+                Személy ujSzemely = new Személy(nev, eletkor, megjegyzes);
+                szem.hozzaad(ujSzemely);
+
+                Console.WriteLine($"Jelenlévő ügyek: {ugy.kiirat}");
+                Console.Write($"\n Ügy Azonosítója: ");
+                string azonosito = Console.ReadLine();
+
+                ugy.ugySzemelyHozzaad(azonosito, ujSzemely);
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
+                Console.ReadKey();
+                Console.Clear();
+                Console.ResetColor();
+            }
+            else if (tipus.ToLower() == "gyanusitott")
+            {
+                Console.Write("Név: ");
+                nev = Console.ReadLine();
+
+                Console.Write("Életkor: ");
+                eletkor = Convert.ToInt32(Console.ReadLine());
+                
+                Console.Write("Megjegyzés: ");
+                megjegyzes = Console.ReadLine();
+
+                Console.Write("Gyanusítottsági szint: ");
+                int gyanusitottsagiSzint = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Státusz: ");
+                string statusz = Console.ReadLine();
+
+                Gyanusított ujGyanusitott = new Gyanusított(nev, eletkor, megjegyzes, gyanusitottsagiSzint, statusz);
+                szem.hozzaad(ujGyanusitott);
+
+                Console.WriteLine($"Jelenlévő ügyek: {ugy.kiirat}");
+                Console.Write($"\n Ügy Azonosítója: ");
+                string azonosito = Console.ReadLine();
+
+                ugy.ugySzemelyHozzaad(azonosito, ujGyanusitott);
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
+                Console.ReadKey();
+                Console.Clear();
+                Console.ResetColor();
+            }
         }
         /*public static void adattagAtnevezes(ÜgyekKezelő ugykez, string ugyID, Ügy ugy)
         {
