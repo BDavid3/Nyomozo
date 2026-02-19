@@ -33,6 +33,11 @@ namespace Nyomozo
         public List<Személy> SzemelyekListaja { get => szemelyekListaja; set => szemelyekListaja = value; }
         public List<Bizonyíték> BizonyitekokListaja { get => bizonyitekokListaja; set => bizonyitekokListaja = value; }
 
+        public override string ToString()
+        {
+            return $"\nÜgy azonosító: {this.ügyAzonosító} | Cím: {this.cim} | Leírás: {this.leiras}\nSzemélyek: {this.szemelyekListaja}\nBizonyítékok: {this.bizonyitekokListaja}";
+        }
+
     }   
     
 }

@@ -25,14 +25,10 @@ namespace Nyomozo
         public int Eletkor { get => eletkor; set => eletkor = value; }
         public string Megjegyzes { get => megjegyzes; set => megjegyzes = value; }
 
-        
-        public void szemelyUgy()
+
+        public override string ToString()
         {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Személy hozzáadása egy ügyhöz!\n");
-            Console.ResetColor();
-            Console.WriteLine("Jelenlévő ügyek, és azonosítójuk: \n");
+            return $"\nSzemély neve: {this.nev} | Életkora: {this.eletkor} | Megjegyzés: {this.megjegyzes}";
         }
     }
 }

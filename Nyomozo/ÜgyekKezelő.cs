@@ -27,7 +27,7 @@ namespace Nyomozo
         {
             foreach (var ugy in ugyekListaja)
             {
-                Console.WriteLine($"{ugy}\n");
+                Console.WriteLine(ugy);
             }
         }
         public void ugySzemelyHozzaad(string azonosit,Személy ujSzemely)

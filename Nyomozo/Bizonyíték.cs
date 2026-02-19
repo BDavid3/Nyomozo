@@ -26,6 +26,10 @@ namespace Nyomozo
         public string Leiras { get => leiras; set => leiras = value; }
         public int Megbizhatosag { get => megbizhatosag; set => megbizhatosag = value; }
 
+        public override string ToString()
+        {
+            return $"\nBizonyíték azonosító: {this.azonosito} | Típus: {this.tipus} | Leírás: {this.leiras} | Megbízhatóság: {this.megbizhatosag}";
+        }
 
     }
 }

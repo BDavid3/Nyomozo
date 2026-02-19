@@ -31,6 +31,7 @@
                         idovonalMegtekintes(idovonalKezelo);
                         break;
                     case 5:
+                        elemzesDöntes(ügyekKezelő);
                         break;
                     case 6:
                         Console.WriteLine("Kilépés...");
@@ -113,7 +114,7 @@
 
             Ügy ujUgy = new Ügy(ugyAzonosito, cim, leiras, allapot);
             ügyekKezelő.hozzaad(ujUgy);
-            
+
             Console.Write($"Jelenlévő személyek: ");
             szemelyekKezelo.kiir();
 
@@ -163,7 +164,7 @@
                         ujUgy.SzemelyekListaja.Add(ujGyanusitott);
                     }
 
-                    
+
                 }
 
             }
@@ -256,7 +257,7 @@
                 switch (szamInput)
                 {
                     case 1:
-                        szemelyLetrehozasa(kezelo,ugyKezelo);
+                        szemelyLetrehozasa(kezelo, ugyKezelo);
                         break;
                     case 2:
                         szamInput = 2;
@@ -271,7 +272,7 @@
             }
             while (szamInput != 2);
         }
-        public static void szemelyLetrehozasa(SzemélyekKezelő szem,ÜgyekKezelő ugy)
+        public static void szemelyLetrehozasa(SzemélyekKezelő szem, ÜgyekKezelő ugy)
         {
 
             Console.Clear();
@@ -319,7 +320,7 @@
 
                 Console.Write("Életkor: ");
                 eletkor = Convert.ToInt32(Console.ReadLine());
-                
+
                 Console.Write("Megjegyzés: ");
                 megjegyzes = Console.ReadLine();
 
@@ -371,7 +372,7 @@
                 switch (szamInput)
                 {
                     case 1:
-                        bizonyitekLetrehozas(ügykez,bizkezel);
+                        bizonyitekLetrehozas(ügykez, bizkezel);
                         break;
                     case 2:
                         szamInput = 2;
@@ -381,7 +382,7 @@
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Rossz értéket adtál meg!\n");
                         Console.ResetColor();
-                        break;  
+                        break;
                 }
             }
             while (szamInput != 2);
@@ -399,14 +400,14 @@
             Console.WriteLine("Megbízhatóság: ");
             int megbizhatosag = Convert.ToInt32(Console.ReadLine());
 
-            Bizonyíték ujbizonyitek = new Bizonyíték(azonosito,tipus,leiras,megbizhatosag);
+            Bizonyíték ujbizonyitek = new Bizonyíték(azonosito, tipus, leiras, megbizhatosag);
             bizkezelo.hozzaad(ujbizonyitek);
 
             Console.WriteLine($"Jelenlévő ügyek: {ügykezelo.kiirat}");
             Console.Write($"\n Ügy Azonosítója: ");
             string azon = Console.ReadLine();
 
-            ügykezelo.ugyBizonyitekHozzaad(azon,ujbizonyitek);
+            ügykezelo.ugyBizonyitekHozzaad(azon, ujbizonyitek);
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
@@ -470,9 +471,26 @@
             Console.Write("Esemény leírása: ");
             string leiras = Console.ReadLine();
 
-            IdővonalEsemény ujEsemeny = new IdővonalEsemény(ev,honap,nap,leiras);
+            IdővonalEsemény ujEsemeny = new IdővonalEsemény(ev, honap, nap, leiras);
             kezel.Esemenyek.Add(ujEsemeny);
             Console.WriteLine();
+        }
+        public static void elemzesDöntes(ÜgyekKezelő ügykez)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Elemzés / Döntések menüpontot választotta!\n");
+            Console.ResetColor();
+
+            Console.WriteLine("Jelenlegi ügyek: ");
+            ügykez.kiirat();
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
+            Console.ReadKey();
+            Console.Clear();
+            Console.ResetColor();
+
         }
     }
 }
