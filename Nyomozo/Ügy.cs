@@ -22,8 +22,8 @@ namespace Nyomozo
             this.cim = cim;
             this.leiras = leiras;
             this.allapot = allapot;
-            List<string> szemelyekListaja = new List<string>();
-            List<string> bizonyitekokListaja = new List<string>();
+            szemelyekListaja = new List<Személy>();
+            bizonyitekokListaja = new List<Bizonyíték>();
         }
 
         public string ÜgyAzonosító { get => ügyAzonosító; set => ügyAzonosító = value; }
