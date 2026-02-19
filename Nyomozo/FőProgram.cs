@@ -7,6 +7,7 @@
             SzemélyekKezelő személyekKezelő = new SzemélyekKezelő();
             ÜgyekKezelő ügyekKezelő = new ÜgyekKezelő();
             BizonyítékokKezelő bizkez = new BizonyítékokKezelő();
+            IdővonalEseményKezelő idovonalKezelo = new IdővonalEseményKezelő();
             int intSzamInput;
 
             do
@@ -27,6 +28,7 @@
                         bizonyitekKezelese(ügyekKezelő, bizkez);
                         break;
                     case 4:
+                        idovonalMegtekintes(idovonalKezelo);
                         break;
                     case 5:
                         break;
@@ -343,6 +345,64 @@
             Console.ResetColor();
 
 
+        }
+        public static void idovonalMegtekintes(IdővonalEseményKezelő kezelo)
+        {
+            int input;
+
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Idővonal megtekintését választotta!\n");
+            Console.ResetColor();
+
+            do
+            {
+                Console.WriteLine("1. Idővonal megtekintése");
+                Console.WriteLine("2. Idővonal esemény hozzáadása");
+                Console.WriteLine("3. Kilépés");
+                Console.Write("\nSzám: ");
+
+                input = Convert.ToInt32(Console.ReadLine());
+
+                switch (input)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.WriteLine("Idővonal eseményei:");
+                        kezelo.kiiratIdoSzerint();
+
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Console.ResetColor();
+                        break;
+                    case 2:
+                        idovonalLetrehozas(kezelo);
+                        break;
+                    case 3:
+                        input = 3;
+                        Console.WriteLine();
+                        break;
+                }
+            }
+            while (input != 3);
+        }
+        public static void idovonalLetrehozas(IdővonalEseményKezelő kezel)
+        {
+            Console.Clear();
+            Console.Write("Év: ");
+            int ev = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Hónap: ");
+            int honap = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Nap: ");
+            int nap = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Esemény leírása: ");
+            string leiras = Console.ReadLine();
+
+            IdővonalEsemény ujEsemeny = new IdővonalEsemény(ev,honap,nap,leiras);
+            kezel.Esemenyek.Add(ujEsemeny);
+            Console.WriteLine();
         }
     }
 }
