@@ -82,6 +82,7 @@
                         break;
                     case 2:
                         ugyKezelo.kiirat();
+                        Console.WriteLine();
                         break;
                     case 3:
                         szamInput = 4;
@@ -272,7 +273,7 @@
             }
             while (szamInput != 2);
         }
-        public static void szemelyLetrehozasa(SzemélyekKezelő szem, ÜgyekKezelő ugy)
+        public static void szemelyLetrehozasa(SzemélyekKezelő szem, ÜgyekKezelő ugyKezelo)
         {
 
             Console.Clear();
@@ -301,11 +302,12 @@
                 Személy ujSzemely = new Személy(nev, eletkor, megjegyzes);
                 szem.hozzaad(ujSzemely);
 
-                Console.WriteLine($"Jelenlévő ügyek: {ugy.kiirat}");
+                Console.WriteLine($"Jelenlévő ügyek: ");
+                ugyKezelo.kiirat();
                 Console.Write($"\n Ügy Azonosítója: ");
                 string azonosito = Console.ReadLine();
 
-                ugy.ugySzemelyHozzaad(azonosito, ujSzemely);
+                ugyKezelo.ugySzemelyHozzaad(azonosito, ujSzemely);
 
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
@@ -333,11 +335,12 @@
                 Gyanusított ujGyanusitott = new Gyanusított(nev, eletkor, megjegyzes, gyanusitottsagiSzint, statusz);
                 szem.hozzaad(ujGyanusitott);
 
-                Console.WriteLine($"Jelenlévő ügyek: {ugy.kiirat}");
+                Console.WriteLine($"Jelenlévő ügyek: ");
+                ugyKezelo.kiirat();
                 Console.Write($"\n Ügy Azonosítója: ");
                 string azonosito = Console.ReadLine();
 
-                ugy.ugySzemelyHozzaad(azonosito, ujGyanusitott);
+                ugyKezelo.ugySzemelyHozzaad(azonosito, ujGyanusitott);
 
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write("\nNyomj meg egy gombot a visszatéréshez...");
@@ -490,7 +493,6 @@
             Console.ReadKey();
             Console.Clear();
             Console.ResetColor();
-
         }
     }
 }

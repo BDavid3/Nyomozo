@@ -30,6 +30,7 @@ namespace Nyomozo
                 Console.WriteLine(ugy);
             }
         }
+            
         public void ugySzemelyHozzaad(string azonosit,Személy ujSzemely)
         {
             foreach (var ugy in ugyekListaja)

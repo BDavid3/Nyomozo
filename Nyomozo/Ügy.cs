@@ -35,7 +35,9 @@ namespace Nyomozo
 
         public override string ToString()
         {
-            return $"\nÜgy azonosító: {this.ügyAzonosító} | Cím: {this.cim} | Leírás: {this.leiras}\nSzemélyek: {this.szemelyekListaja}\nBizonyítékok: {this.bizonyitekokListaja}";
+            string szemelyekSzoveg = string.Join(", ",this.szemelyekListaja);
+            string bizonyitekokSzoveg = string.Join(", ", this.bizonyitekokListaja);
+            return $"\nÜgy azonosító: {this.ügyAzonosító} | Cím: {this.cim} | Leírás: {this.leiras}\nSzemélyek: {szemelyekSzoveg}\nBizonyítékok: {bizonyitekokSzoveg}";
         }
 
     }   
